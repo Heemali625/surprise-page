@@ -112,6 +112,7 @@
   <canvas id="confetti" style="position:fixed;pointer-events:none;inset:0;z-index:40;display:none"></canvas>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
     // hearts
     const heartsContainer = document.getElementById('hearts');
     function spawnHeart(){
@@ -261,9 +262,11 @@
       const newMsg = prompt('Write a short personal message (keep it under 300 chars):', document.getElementById('surpriseText').innerText);
       if(newMsg!==null) document.getElementById('surpriseText').innerText = newMsg;
     });
+      });
   </script>
 </body>
 </html>
+
 
 
 
