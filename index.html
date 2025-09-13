@@ -193,6 +193,19 @@
     // If the file is in the same folder as this HTML, set to 'mysong.mp3'
     // Or set to a full URL: 'https://example.com/mysong.mp3'
     music.src = 'https://heemali625.github.io/surprise-page/song.mp3'; // test file (public direct mp3) - replace with your own file or URL
+      tapOverlay.style.display = 'flex'; // force showing overlay until user taps
+      console.log('DEBUG: music.src =', music.src);
+fetch(music.src, { method: 'HEAD' }).then(r => {
+  console.log('DEBUG: fetch HEAD status', r.status, r.type);
+}).catch(e => {
+  console.warn('DEBUG: fetch HEAD failed', e);
+});
+
+ensureAudioContext().then(()=>{
+  music.play().then(()=> console.log('DEBUG: music.play resolved — playing'))
+  .catch(err => console.error('DEBUG: music.play rejected:', err));
+});
+
     // ======================================================
 
     // ensure AudioContext available/resumed on mobile
@@ -266,6 +279,7 @@
   </script>
 </body>
 </html>
+
 
 
 
